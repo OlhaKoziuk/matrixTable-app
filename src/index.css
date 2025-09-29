@@ -1,0 +1,129 @@
+:root{
+  --gap: 12px;
+  --gap-lg: 16px;
+  --radius: 12px;
+  --input-h: 40px;
+  --container-max: 1200px;
+
+  --bg: #ffffff;
+  --bg-muted: #f7f8fa;
+  --text: #16181d;
+  --text-muted: #667085;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --focus: #93c5fd66;
+
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b0c0f;
+    --bg-muted: #111318;
+    --text: #eef2ff;
+    --text-muted: #9aa4b2;
+    --border: #21242c;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --focus: #3b82f666;
+  }
+}
+
+*{ box-sizing: border-box; }
+html, body, #root{ height: 100%; }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.45;
+}
+
+.app-container{
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: var(--gap-lg);
+}
+
+.inputs-panel{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+  align-items: end;
+  background: var(--bg-muted);
+  padding: calc(var(--gap-lg) - 2px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 900px){
+  .inputs-panel{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .inputs-panel{ grid-template-columns: 1fr; }
+}
+
+.inputs-panel__group{
+  display: grid;
+  gap: 6px;
+}
+
+.inputs-panel__label{
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+}
+
+.inputs-panel__hint{
+  font-size: var(--fs-12);
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.inputs-panel__input{
+  height: var(--input-h);
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs-14);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.inputs-panel__input:focus{
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--focus);
+}
+.inputs-panel__input::-webkit-outer-spin-button,
+.inputs-panel__input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+.inputs-panel__input[type=number]{ -moz-appearance: textfield; appearance: textfield; }
+
+.inputs-panel__submit{
+  height: var(--input-h);
+  padding: 0 16px;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s ease, transform .02s ease;
+}
+.inputs-panel__submit:hover{ background: var(--primary-hover); }
+.inputs-panel__submit:active{ transform: translateY(1px); }
+
+.td-click{
+  cursor: pointer;
+  user-select: none;
+}
+.td-click:active{
+  transform: translateY(1px);
+}
+
+
